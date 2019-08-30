@@ -46,7 +46,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 from matplotlib import pylab as py
 
-def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
+def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.1):
 
     """
     This function reads an earthquake catalogue file and calculates the
