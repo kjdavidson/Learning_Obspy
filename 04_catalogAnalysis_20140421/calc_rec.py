@@ -198,6 +198,8 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     # Plot the results
     ###########################################################################
     """
+    """
+    # Original plot
     # Plotting
     #fig = py.scatter(bins, new_cum_annual_rate, label = 'Catalogue')
     py.scatter(bins, cum_hist)
@@ -218,4 +220,12 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     py.show()
     
     return cum_hist[::-1], bins[::-1]
+    """
+    
+    # KD plot here
+    fig = plt.figure()
+    ax = plt.gca()
+    ax.scatter(bins, new_cum_annual_rate)
+    ax.set_yscale('log')
+    plt.show()
     
