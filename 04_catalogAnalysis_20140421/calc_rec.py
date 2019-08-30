@@ -72,11 +72,6 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
                 of earthquake recurrence. Default avlue 0.1 magnitude units.  
     
     """
-
-    
-    magnitudes = []
-    years = []
-        
     ###########################################################################
     # Read data
     ###########################################################################
@@ -162,10 +157,7 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     b_mle = np.log10(np.exp(1)) / (np.mean(df['Magnitude']) - min_mag)
     beta_mle = np.log(10) * b_mle
     print('Maximum Likelihood: b value', b_mle)
-    
-    """
-
-    
+        
     ###########################################################################
     # Generate data to plot results
     ###########################################################################
@@ -225,4 +217,4 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     py.show()
     
     return cum_hist[::-1], bins[::-1]
-    """
+    
