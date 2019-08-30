@@ -36,9 +36,10 @@ Ref: Kramer, S.L. 1996. Geotechnical Earthquake Engineering, p123.
 
 Creator: Jonathan Griffin, Australia-Indonesia Facility for Disaster Reduction
 Created: 23 August 2010
+
+Update: Kevin Davidson, August 2019
 """
 
-import sys,os
 import numpy as np
 from scipy import stats
 import matplotlib
@@ -140,17 +141,17 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     #    new_cum_annual_rate.append(i+1e-20)
 
     # Take logarithm
-    #log_cum_sum = np.log10(new_cum_annual_rate)
+    log_cum_sum = np.log10(new_cum_annual_rate)
     
     ###########################################################################
     # Fit a and b parameters using a varity of methods
     ###########################################################################
-    #print cum_hist
-    #print bins
-    '''
+    print(cum_hist)
+    print(bins)
+    
     # Fit a least squares curve
     b,a = np.polyfit(bins, log_cum_sum, 1)
-    print 'Least Squares: b value', -1. * b, 'a value', a
+    print('Least Squares: b value', -1. * b, 'a value', a)
     alpha = np.log(10) * a
     beta = -1.0 * np.log(10) * b
 
@@ -158,7 +159,7 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     # b value
     b_mle = np.log10(np.exp(1)) / (np.mean(magnitudes) - min_mag)
     beta_mle = np.log(10) * b_mle
-    print 'Maximum Likelihood: b value', b_mle
+    print('Maximum Likelihood: b value', b_mle)
 
     
     ###########################################################################
@@ -218,5 +219,5 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     ax.set_ylabel('Annual probability')
     ax.set_xlabel('Magnitude')
     py.show()
-    '''
+    
     return cum_hist[::-1], bins[::-1]
