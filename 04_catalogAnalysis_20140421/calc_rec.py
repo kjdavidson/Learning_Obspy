@@ -100,17 +100,14 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     print('Minimum magnitude:', min_mag)
     print('Maximum magnitude:', max_mag)
     print('Total number of earthquakes:', num_eq)
+        
+    num_years = df['Year'].max() - df['Year'].min()
+    annual_num_eq = num_eq/num_years
+    print('Average annual number of earthquakes greater than Mw', min_mag,':', annual_num_eq)
+    print('Maximum catalog magnitude:', df['Magnitude'].max())
+    max_mag_bin = df['Magnitude'].max() + 0.15
     
-    """
-    #num_years = max(years)-min(years)
-    #annual_num_eq = num_eq/num_years
-    #print 'Annual number of earthquakes greater than Mw', min_mag,':', \
-    #annual_num_eq
-    print('Maximum catalog magnitude:', max(magnitudes))
-    print('Mmax = ', max_mag)
-    max_mag_bin = max(magnitudes) + 0.15
     
-    """
     """
     # Magnitude bins
     bins = np.arange(min_mag, max_mag_bin, interval)
