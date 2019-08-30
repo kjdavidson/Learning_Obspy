@@ -119,10 +119,10 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     # Generate distribution
     ###########################################################################
     # Generate histogram
-    hist = np.histogram(magnitudes,bins=bins)
-    #plt.plot(hist)
+    hist = np.histogram(df['Magnitude'],bins=bins)
+    #plt.hist(hist)
 
-    """
+    
 
     # Reverse array order
     hist = hist[0][::-1]
@@ -133,13 +133,14 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     # Ensure bins have the same length has the cumulative histogram.
     # Remove the upper bound for the highest interval.
     bins = bins[1:]
-
+    
     ## Get annual rate
-    #cum_annual_rate = cum_hist/num_years
-
-    #new_cum_annual_rate = []
-    #for i in cum_annual_rate:
-    #    new_cum_annual_rate.append(i+1e-20)
+    cum_annual_rate = cum_hist/num_years
+    #print('Cumulative annual rate:', cum_annual_rate)
+    
+    new_cum_annual_rate = []
+    for i in cum_annual_rate:
+        new_cum_annual_rate.append(i+1e-20)
 
     # Take logarithm
     log_cum_sum = np.log10(new_cum_annual_rate)
@@ -158,9 +159,11 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
 
     # Maximum Likelihood Estimator fitting
     # b value
-    b_mle = np.log10(np.exp(1)) / (np.mean(magnitudes) - min_mag)
+    b_mle = np.log10(np.exp(1)) / (np.mean(df['Magnitude']) - min_mag)
     beta_mle = np.log(10) * b_mle
     print('Maximum Likelihood: b value', b_mle)
+    
+    """
 
     
     ###########################################################################
