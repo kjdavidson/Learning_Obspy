@@ -139,7 +139,7 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
 
     # Take logarithm
     log_cum_sum = np.log10(new_cum_annual_rate)
-    
+    """
     ###########################################################################
     # Fit a and b parameters using a varity of methods
     ###########################################################################
@@ -197,20 +197,21 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     ###########################################################################
     # Plot the results
     ###########################################################################
-
+    """
     # Plotting
-    fig = py.scatter(bins, new_cum_annual_rate, label = 'Catalogue')
+    #fig = py.scatter(bins, new_cum_annual_rate, label = 'Catalogue')
+    py.scatter(bins, cum_hist)
     ax = py.gca()
-    ax.plot(plot_bins, log_ls_fit, c = 'r', label = 'Least Squares')
-    ax.plot(plot_bins, ls_bounded, c = 'r', linestyle ='--', label = 'Least Squares Bounded')
-    ax.plot(plot_bins, log_mle_fit, c = 'g', label = 'Maximum Likelihood')
-    ax.plot(plot_bins, mle_bounded, c = 'g', linestyle ='--', label = 'Maximum Likelihood Bounded')
-    ax.plot(plot_bins, log_fit_data, c = 'b', label = 'b = 1')
+    #ax.plot(plot_bins, log_ls_fit, c = 'r', label = 'Least Squares')
+    #ax.plot(plot_bins, ls_bounded, c = 'r', linestyle ='--', label = 'Least Squares Bounded')
+    #ax.plot(plot_bins, log_mle_fit, c = 'g', label = 'Maximum Likelihood')
+    #ax.plot(plot_bins, mle_bounded, c = 'g', linestyle ='--', label = 'Maximum Likelihood Bounded')
+    #ax.plot(plot_bins, log_fit_data, c = 'b', label = 'b = 1')
     
     #ax.plot(bins, ls_fit2, c = 'k')
     ax.set_yscale('log')
     ax.legend()
-    ax.set_ylim([min(new_cum_annual_rate) * 0.1, max(new_cum_annual_rate) * 10.])
+    #ax.set_ylim([min(new_cum_annual_rate) * 0.1, max(new_cum_annual_rate) * 10.])
     ax.set_xlim([min_mag - 0.5, max_mag + 0.5])
     ax.set_ylabel('Annual probability')
     ax.set_xlabel('Magnitude')
