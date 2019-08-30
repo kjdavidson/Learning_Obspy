@@ -40,6 +40,7 @@ Created: 23 August 2010
 Update: Kevin Davidson, August 2019
 """
 
+import pandas as pd
 import numpy as np
 from scipy import stats
 import matplotlib
@@ -74,13 +75,7 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
 
     
     magnitudes = []
-    #years = []
-
-    # If minimum magnitude is not specified, read all magnitudes
-    if min_mag is not None:
-        pass
-    else:
-        min_mag = -1.0
+    years = []
         
     ###########################################################################
     # Read data
@@ -92,18 +87,21 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
             magnitudes.append(mag)
         #years.append(float(row[2]))
     
-    # If minimum magnitude is not specified default value to minimum in catalogue
-    if min_mag == -1.0:
-        min_mag = min(magnitudes)
-    # If maximum magnitude is not specified default value to maximum in catalogue
-    if max_mag is not None:
+    if min_mag is None:
+        pass
         pass
     else:
         max_mag = max(magnitudes) + 0.1
 
-    num_eq = len(magnitudes)
+    min_mag = df['Magnitude'].min()
+    max_mag = df['Magnitude'].max()
+
+    num_eq = len(df)
     print('Minimum magnitude:', min_mag)
+    print('Maximum magnitude:', max_mag)
     print('Total number of earthquakes:', num_eq)
+    
+    """
     #num_years = max(years)-min(years)
     #annual_num_eq = num_eq/num_years
     #print 'Annual number of earthquakes greater than Mw', min_mag,':', \
@@ -112,6 +110,8 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     print('Mmax = ', max_mag)
     max_mag_bin = max(magnitudes) + 0.15
     
+    """
+    """
     # Magnitude bins
     bins = np.arange(min_mag, max_mag_bin, interval)
     # Magnitude bins for plotting - we will re-arrange bins later
@@ -221,3 +221,4 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     py.show()
     
     return cum_hist[::-1], bins[::-1]
+    """
