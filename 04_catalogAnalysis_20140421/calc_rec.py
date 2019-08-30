@@ -43,7 +43,7 @@ Update: Kevin Davidson, August 2019
 import pandas as pd
 import numpy as np
 from scipy import stats
-import matplotlib
+import matplotlib.pyplot as plt
 from matplotlib import pylab as py
 
 def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
@@ -105,10 +105,11 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     annual_num_eq = num_eq/num_years
     print('Average annual number of earthquakes greater than Mw', min_mag,':', annual_num_eq)
     print('Maximum catalog magnitude:', df['Magnitude'].max())
+    
+    
     max_mag_bin = df['Magnitude'].max() + 0.15
+      
     
-    
-    """
     # Magnitude bins
     bins = np.arange(min_mag, max_mag_bin, interval)
     # Magnitude bins for plotting - we will re-arrange bins later
@@ -119,6 +120,9 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     ###########################################################################
     # Generate histogram
     hist = np.histogram(magnitudes,bins=bins)
+    #plt.plot(hist)
+
+    """
 
     # Reverse array order
     hist = hist[0][::-1]
