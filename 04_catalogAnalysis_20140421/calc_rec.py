@@ -226,6 +226,6 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.1):
     fig = plt.figure()
     ax = plt.gca()
     ax.scatter(bins, new_cum_annual_rate)
-    ax.set_yscale('log')
+    #ax.set_yscale('log')
     plt.show()
     
