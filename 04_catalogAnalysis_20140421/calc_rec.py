@@ -81,17 +81,17 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.05):
     # Read data
     ###########################################################################
     
-    for row in range(len(infile)):
-        mag = infile[row]
-        if (mag >= min_mag):# and (depth <= max_depth):
-            magnitudes.append(mag)
-        #years.append(float(row[2]))
+    df = pd.read_csv(infile) 
     
     if min_mag is None:
         pass
+    else:
+        df = df[df['Magnitude'] >= min_mag]
+        
+    if max_mag is None:
         pass
     else:
-        max_mag = max(magnitudes) + 0.1
+        df = df[df['Magnitude'] <= max_mag]
 
     min_mag = df['Magnitude'].min()
     max_mag = df['Magnitude'].max()
