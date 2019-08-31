@@ -473,7 +473,7 @@ class Parser_ncedc(object):
                     data['digitizer_gain'] = blkt.sensitivity_gain
             elif blkt.id == 53 or blkt.id == 61:
                 if blkt.id == 60:
-                    print blkt.stages
+                    print(blkt.stages)
                     abbreviation = blkt.stages[0][1]
                     data['seismometer_gain'] = \
                         [blk.sensitivity_gain for blk in self.abbreviations
