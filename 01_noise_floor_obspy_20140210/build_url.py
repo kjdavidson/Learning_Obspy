@@ -17,7 +17,7 @@ def get_dataless_seed(network, station, location, channel, starttime,endtime):
     base_url ='http://service.ncedc.org'
     service = 'dataless'
     url = build_url(base_url,service,1,'query',param)
-    print url
+    print(url)
     return url
     
 def build_url(base_url, service, major_version, resource_type, parameters={}):
