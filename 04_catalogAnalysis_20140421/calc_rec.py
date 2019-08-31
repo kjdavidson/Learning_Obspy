@@ -42,8 +42,6 @@ Update: Kevin Davidson, August 2019
 
 import pandas as pd
 import numpy as np
-from scipy import stats
-import matplotlib.pyplot as plt
 from matplotlib import pylab as py
 
 def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.1):
@@ -69,7 +67,7 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.1):
                 defined as the maximum magnitude in the catlogue + 0.1 magnitude
                 units.
         interval: Width of magnitude bins for generating cumulative histogram
-                of earthquake recurrence. Default avlue 0.1 magnitude units.  
+                of earthquake recurrence. Default value 0.1 magnitude units.  
     
     """
     ###########################################################################
@@ -115,10 +113,7 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.1):
     ###########################################################################
     # Generate histogram
     hist = np.histogram(df['Magnitude'],bins=bins)
-    #plt.hist(hist)
-
     
-
     # Reverse array order
     hist = hist[0][::-1]
     bins = bins[::-1]
@@ -139,7 +134,7 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.1):
 
     # Take logarithm
     log_cum_sum = np.log10(new_cum_annual_rate)
-    """
+    
     ###########################################################################
     # Fit a and b parameters using a varity of methods
     ###########################################################################
@@ -149,7 +144,7 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.1):
     # Fit a least squares curve
     b,a = np.polyfit(bins, log_cum_sum, 1)
     print('Least Squares: b value', -1. * b, 'a value', a)
-    alpha = np.log(10) * a
+    #alpha = np.log(10) * a
     beta = -1.0 * np.log(10) * b
 
     # Maximum Likelihood Estimator fitting
@@ -197,35 +192,22 @@ def calc_recurrence(infile, min_mag = None, max_mag = None, interval = 0.1):
     ###########################################################################
     # Plot the results
     ###########################################################################
-    """
-    """
-    # Original plot
-    # Plotting
-    #fig = py.scatter(bins, new_cum_annual_rate, label = 'Catalogue')
-    py.scatter(bins, cum_hist)
-    ax = py.gca()
-    #ax.plot(plot_bins, log_ls_fit, c = 'r', label = 'Least Squares')
-    #ax.plot(plot_bins, ls_bounded, c = 'r', linestyle ='--', label = 'Least Squares Bounded')
-    #ax.plot(plot_bins, log_mle_fit, c = 'g', label = 'Maximum Likelihood')
-    #ax.plot(plot_bins, mle_bounded, c = 'g', linestyle ='--', label = 'Maximum Likelihood Bounded')
-    #ax.plot(plot_bins, log_fit_data, c = 'b', label = 'b = 1')
     
-    #ax.plot(bins, ls_fit2, c = 'k')
+    # Plotting
+    py.scatter(bins, new_cum_annual_rate, label = 'Catalogue')
+    ax = py.gca()
+    ax.plot(plot_bins, log_ls_fit, c = 'r', label = 'Least Squares')
+    ax.plot(plot_bins, ls_bounded, c = 'r', linestyle ='--', label = 'Least Squares Bounded')
+    ax.plot(plot_bins, log_mle_fit, c = 'g', label = 'Maximum Likelihood')
+    ax.plot(plot_bins, mle_bounded, c = 'g', linestyle ='--', label = 'Maximum Likelihood Bounded')
+    ax.plot(plot_bins, log_fit_data, c = 'b', label = 'b = 1')
+    
     ax.set_yscale('log')
     ax.legend()
-    #ax.set_ylim([min(new_cum_annual_rate) * 0.1, max(new_cum_annual_rate) * 10.])
+    ax.set_ylim([min(new_cum_annual_rate) * 0.1, max(new_cum_annual_rate) * 10.])
     ax.set_xlim([min_mag - 0.5, max_mag + 0.5])
     ax.set_ylabel('Annual probability')
     ax.set_xlabel('Magnitude')
     py.show()
     
     return cum_hist[::-1], bins[::-1]
-    """
-    
-    # KD plot here
-    fig = plt.figure()
-    ax = plt.gca()
-    ax.scatter(bins, new_cum_annual_rate)
-    #ax.set_yscale('log')
-    plt.show()
-    
