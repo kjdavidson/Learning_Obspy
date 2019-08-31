@@ -4,3 +4,4 @@
 04_catalogAnalysis_20140421/__pycache__/calc_rec.cpython-37.pyc
 01_noise_floor_obspy_20140210/.ipynb_checkpoints/Obspy_noise_floor-checkpoint.ipynb
 *.pyc
+02_filtering_obspy_20140303/.ipynb_checkpoints/Obspy_filtering-checkpoint.ipynb
