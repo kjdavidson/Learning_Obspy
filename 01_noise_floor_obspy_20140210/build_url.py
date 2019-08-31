@@ -1,8 +1,9 @@
-from obspy.fdsn.header import DEFAULT_USER_AGENT, \
+"""
+from obspy.clients.fdsn.header import DEFAULT_USER_AGENT, \
     URL_MAPPINGS, DEFAULT_PARAMETERS, PARAMETER_ALIASES, \
     WADL_PARAMETERS_NOT_TO_BE_PARSED, FDSNException, FDSNWS
+"""
 import urllib
-import urllib2
     
 def get_dataless_seed(network, station, location, channel, starttime,endtime):
     locs = locals()  
