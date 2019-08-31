@@ -37,7 +37,7 @@ Ref: Kramer, S.L. 1996. Geotechnical Earthquake Engineering, p123.
 Creator: Jonathan Griffin, Australia-Indonesia Facility for Disaster Reduction
 Created: 23 August 2010
 
-Update: Kevin Davidson, August 2019
+Update: Kevin Davidson, August 2019 - modified to work with Python 3
 """
 
 import pandas as pd
