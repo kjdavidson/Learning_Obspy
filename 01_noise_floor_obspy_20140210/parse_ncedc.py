@@ -13,7 +13,7 @@ from io import StringIO
 from lxml.etree import Element, SubElement, tostring, parse as xmlparse
 from obspy import __version__
 from obspy.core.utcdatetime import UTCDateTime
-from obspy.core.util import deprecated_keywords
+from obspy.core.util.decorator import deprecated_keywords
 from obspy.core.util.decorator import map_example_filename
 from obspy.xseed import DEFAULT_XSEED_VERSION, utils, blockette
 from obspy.xseed.utils import SEEDParserException
