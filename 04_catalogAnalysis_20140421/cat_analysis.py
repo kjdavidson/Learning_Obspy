@@ -85,7 +85,7 @@ def get_hist_mt(t1, t2, llat = '-90', ulat = '90', llon = '-180', ulon = '180',
     param['list'] = list
     
     url = "?".join((base_url, urllib.urlencode(param)))
-    print url
+    print(url)
     
     page = urllib2.urlopen(url)
     from BeautifulSoup import BeautifulSoup
@@ -185,7 +185,7 @@ def plot_hist_mt(psmeca_dict, figsize = (16,24), mt_size = 10, pretty = False, r
                         "100 km $<$ depth $\leq$ 200 km", "200 km $<$ depth"), numpoints=1, loc=3)
         plt.show()
     else:
-        print 'No historical MT found!'
+        print ('No historical MT found!')
 
 def eq2df(earthquakes):
 
@@ -799,7 +799,7 @@ def plot_mt(earthquakes, mt, event_id, location = None, M_above = 5.0, show_abov
     
     plt.show()
     
-    print 'Max magnitude ' + str(np.max(mags)), 'Min magnitude ' + str(np.min(mags))
+    print ('Max magnitude ' + str(np.max(mags)), 'Min magnitude ' + str(np.min(mags)))
     
 
 def plot_event(catalog, projection='cyl', resolution='l',
