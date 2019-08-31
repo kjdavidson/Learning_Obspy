@@ -15,13 +15,13 @@ from obspy import __version__
 from obspy.core.utcdatetime import UTCDateTime
 from obspy.core.util.decorator import deprecated_keywords
 from obspy.core.util.decorator import map_example_filename
-from obspy.xseed import DEFAULT_XSEED_VERSION, utils, blockette
-from obspy.xseed.utils import SEEDParserException
+from obspy.io.xseed import DEFAULT_XSEED_VERSION, utils, blockette
+from obspy.io.xseed.utils import SEEDParserException
 import copy
 import datetime
 import math
 import os
-import urllib2
+import urllib3
 import warnings
 import zipfile
 
@@ -148,7 +148,7 @@ class Parser_ncedc(object):
         if isinstance(data, basestring):
             if "://" in data:
                 # some URL
-                data = urllib2.urlopen(data).read()
+                data = urllib3.urlopen(data).read()
             elif os.path.isfile(data):
                 # looks like a file - read it
                 data = open(data, 'rb').read()
