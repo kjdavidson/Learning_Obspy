@@ -9,7 +9,7 @@ Main module containing XML-SEED parser.
     (http://www.gnu.org/copyleft/lesser.html)
 """
 
-from StringIO import StringIO
+from io import StringIO
 from lxml.etree import Element, SubElement, tostring, parse as xmlparse
 from obspy import __version__
 from obspy.core.utcdatetime import UTCDateTime
