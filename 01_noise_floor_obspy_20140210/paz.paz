@@ -1,0 +1,35 @@
+* **********************************
+* NETWORK   (KNETWK): PG
+* STATION    (KSTNM): OBS3
+* LOCATION   (KHOLE):   
+* CHANNEL   (KCMPNM): HH1
+* CREATED           : 2019,243,03:48:39
+* START             : 2013,244,00:00:00
+* END               : 2014,064,00:00:00
+* DESCRIPTION       : Diablo Canyon OBS #3
+* LATITUDE          : 35.22323
+* LONGITUDE         : -120.939617
+* ELEVATION         : -107
+* DEPTH             : 0
+* DIP               : 0
+* AZIMUTH           : 0
+* SAMPLE RATE       : 200
+* INPUT UNIT        : M
+* OUTPUT UNIT       : COUNTS
+* INSTTYPE          : Guralp CMG-3T Broad Band Seismometer
+* INSTGAIN          : 1.500000E+03 (M/S)
+* COMMENT           : N/A
+* SENSITIVITY       : 4.687500E+08 (M/S)
+* A0                : 5.715723E+08
+* **********************************
+ZEROS   3
+        +0.00000E+00    +0.00000E+00
+        +0.00000E+00    +0.00000E+00
+        +0.00000E+00    +0.00000E+00
+POLES   5
+        -5.88873E-03    +5.88873E-03
+        -5.88873E-03    -5.88873E-03
+        -5.02655E+02    +0.00000E+00
+        -1.00531E+03    +0.00000E+00
+        -1.13097E+03    +0.00000E+00
+CONSTANT        +2.679245E+17
