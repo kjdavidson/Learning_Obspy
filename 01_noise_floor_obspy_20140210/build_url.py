@@ -61,11 +61,11 @@ def build_url(base_url, service, major_version, resource_type, parameters={}):
                     str(major_version), resource_type))
     if parameters:
         # Strip parameters.
-        for key, value in parameters.iteritems():
+        for key, value in parameters.items():
             try:
                 parameters[key] = value.strip()
                 #print key, parameters[key]
             except:
                 pass
-        url = "?".join((url, urllib.urlencode(parameters)))
+        url = "?".join((url, urllib.parse.urlencode(parameters)))
     return url
